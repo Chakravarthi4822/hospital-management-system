@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Medicines | MediCare HMS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+<aside class="sidebar">
+      <div class="brand">
+        MediCare HMS
+        <small>Hospital Management System</small>
+      </div>
+      <nav class="nav">
+        <div class="nav-section">Main</div>
+        <a href="dashboard.html"><span class="icon">⌂</span>Dashboard</a>
+        
+        <div class="nav-section">Clinical</div>
+        <a href="patients.html"><span class="icon">👤</span>Patients</a>
+        <a href="departments.html"><span class="icon">▦</span>Departments</a>
+        <a href="doctors.html"><span class="icon">⚕</span>Doctors</a>
+        <a href="appointments.html"><span class="icon">▣</span>Appointments</a>
+        <a href="checkins.html"><span class="icon">✓</span>Check-In</a>
+        <a href="consultations.html"><span class="icon">☑</span>Consultations</a>
+        <a href="diagnoses.html"><span class="icon">✚</span>Diagnoses</a>
+        <a href="prescriptions.html"><span class="icon">Rx</span>Prescriptions</a>
+        
+        <div class="nav-section">Diagnostics & Pharmacy</div>
+        <a href="lab-tests.html"><span class="icon">⌁</span>Lab Tests</a>
+        <a href="lab-results.html"><span class="icon">▤</span>Lab Results</a>
+        <a href="medicines.html"><span class="icon">▥</span>Medicines</a>
+        
+        <div class="nav-section">Finance</div>
+        <a href="bills.html"><span class="icon">₹</span>Bills</a>
+        <a href="payments.html"><span class="icon">◈</span>Payments</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sys-badge"><span class="sys-dot"></span>System Online</div>
+        <div class="sys-version">MediCare v2.4 • HIPAA Certified</div>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <h1>Medicines</h1>
+        <div class="user-chip">
+          <div>
+            <strong data-user-name>User</strong><br>
+            <span data-user-role>Staff</span>
+          </div>
+          <div class="avatar" data-user-name>U</div>
+          <button class="btn btn-secondary btn-sm" onclick="logout()">Logout</button>
+        </div>
+      </header>
+      
+      <section class="content">
+        <div class="page-head">
+          <div>
+            <h2>Medicines</h2>
+            <p id="description"></p>
+          </div>
+          <button class="btn btn-primary" onclick="openCreate()">+ Add</button>
+        </div>
+        
+        <div id="alert" class="alert"></div>
+        
+        <div class="card">
+          <div class="card-body">
+            <div class="searchbar">
+              <input id="search" placeholder="Search records...">
+              <button class="btn btn-secondary" onclick="load()">Refresh</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead id="thead"></thead>
+                <tbody id="rows">
+                  <tr><td class="empty">Loading records...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal" id="modal">
+          <div class="modal-box">
+            <div class="modal-head">
+              <h3 id="modalTitle">Add</h3>
+              <button class="close" onclick="closeForm()">×</button>
+            </div>
+            <form id="recordForm"></form>
+          </div>
+        </div>
+        
+        <div class="modal" id="viewModal">
+          <div class="modal-box">
+            <div class="modal-head">
+              <h3>Record Details</h3>
+              <button class="close" onclick="closeView()">×</button>
+            </div>
+            <div id="viewBody"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/module.js"></script>
+  <script>initModule('medicines');</script>
+</body>
+</html>

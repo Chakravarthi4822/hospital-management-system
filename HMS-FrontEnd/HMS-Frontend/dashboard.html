@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard | MediCare HMS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+<aside class="sidebar">
+      <div class="brand">
+        MediCare HMS
+        <small>Hospital Management System</small>
+      </div>
+      <nav class="nav">
+        <div class="nav-section">Main</div>
+        <a href="dashboard.html"><span class="icon">⌂</span>Dashboard</a>
+        
+        <div class="nav-section">Clinical</div>
+        <a href="patients.html"><span class="icon">👤</span>Patients</a>
+        <a href="departments.html"><span class="icon">▦</span>Departments</a>
+        <a href="doctors.html"><span class="icon">⚕</span>Doctors</a>
+        <a href="appointments.html"><span class="icon">▣</span>Appointments</a>
+        <a href="checkins.html"><span class="icon">✓</span>Check-In</a>
+        <a href="consultations.html"><span class="icon">☑</span>Consultations</a>
+        <a href="diagnoses.html"><span class="icon">✚</span>Diagnoses</a>
+        <a href="prescriptions.html"><span class="icon">Rx</span>Prescriptions</a>
+        
+        <div class="nav-section">Diagnostics & Pharmacy</div>
+        <a href="lab-tests.html"><span class="icon">⌁</span>Lab Tests</a>
+        <a href="lab-results.html"><span class="icon">▤</span>Lab Results</a>
+        <a href="medicines.html"><span class="icon">▥</span>Medicines</a>
+        
+        <div class="nav-section">Finance</div>
+        <a href="bills.html"><span class="icon">₹</span>Bills</a>
+        <a href="payments.html"><span class="icon">◈</span>Payments</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sys-badge"><span class="sys-dot"></span>System Online</div>
+        <div class="sys-version">MediCare v2.4 • HIPAA Certified</div>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <h1>Dashboard <span class="topbar-badge">● Operational</span></h1>
+        <div class="user-chip">
+          <div>
+            <strong data-user-name>User</strong><br>
+            <span data-user-role>Staff</span>
+          </div>
+          <div class="avatar" data-user-name>U</div>
+          <button class="btn btn-secondary btn-sm" onclick="logout()">Logout</button>
+        </div>
+      </header>
+      
+      <section class="content">
+        <div class="card dashboard-hero">
+          <div class="card-body">
+            <div>
+              <span class="eyebrow">CARE OPERATIONS • LIVE PLATFORM</span>
+              <h2>Hospital Operations Overview</h2>
+              <p>Monitor real-time patient admissions, clinical appointments, laboratory testing, and hospital revenue metrics.</p>
+            </div>
+            <div class="hero-mark">✚</div>
+          </div>
+        </div>
+        
+        <div class="page-head" style="margin-top:28px">
+          <div>
+            <h2>Live Summary</h2>
+            <p>Real-time record counters from the hospital database.</p>
+          </div>
+          <button class="btn btn-secondary" onclick="loadDash()">Refresh</button>
+        </div>
+        
+        <div class="grid grid-4" id="stats"></div>
+        
+        <div class="card" style="margin-top:24px">
+          <div class="card-body">
+            <h3 style="margin:0 0 16px;font-size:16px;font-weight:800;color:var(--slate-900)">Quick Clinical Workflows</h3>
+            <div class="quick-grid">
+              <a class="quick" href="patients.html">
+                <strong>Register Patient</strong>
+                <div class="muted">Create a new patient demographic record</div>
+              </a>
+              <a class="quick" href="appointments.html">
+                <strong>Schedule Appointment</strong>
+                <div class="muted">Book an appointment with an active doctor</div>
+              </a>
+              <a class="quick" href="lab-tests.html">
+                <strong>Order Lab Test</strong>
+                <div class="muted">Initiate laboratory investigations</div>
+              </a>
+              <a class="quick" href="bills.html">
+                <strong>Generate Bill</strong>
+                <div class="muted">Create patient invoice for services</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    const items=[
+      ["Patients","/patients","patients.html","👤"],
+      ["Doctors","/doctors","doctors.html","⚕"],
+      ["Appointments","/appointments","appointments.html","▣"],
+      ["Lab Tests","/labtests","lab-tests.html","⌁"],
+      ["Medicines","/medicines","medicines.html","▥"],
+      ["Bills","/bills","bills.html","₹"],
+      ["Payments","/payments","payments.html","◈"],
+      ["Consultations","/consultations","consultations.html","☑"]
+    ];
+    async function loadDash(){
+      const v=await Promise.all(items.map(x=>API.get(x[1]).then(a=>Array.isArray(a)?a.length:0).catch(()=>0)));
+      document.getElementById("stats").innerHTML=items.map((x,i)=>`<a class="card stat" href="${x[2]}"><div><div class="label">${x[0]}</div><div class="value">${v[i]}</div></div><div class="stat-icon">${x[3]}</div></a>`).join("");
+    }
+    document.addEventListener("DOMContentLoaded",loadDash);
+  </script>
+</body>
+</html>
