@@ -63,12 +63,13 @@ public class AppointmentService {
 	
 	public ResponseEntity<List<Appointment>> fetchAllAppointmentService(){
 		List<Appointment> appt=appointmentRepository.findAll();
-		if(!(appt.isEmpty())) {
 		return ResponseEntity.status(HttpStatus.OK).body(appt);
-		}
-		else {
-			return ResponseEntity.notFound().build();
-		}
+//		if(!(appt.isEmpty())) {
+//		return ResponseEntity.status(HttpStatus.OK).body(appt);
+//		}
+//		else {
+//			return ResponseEntity.notFound().build();
+//		}
 	}
 	
 	/*

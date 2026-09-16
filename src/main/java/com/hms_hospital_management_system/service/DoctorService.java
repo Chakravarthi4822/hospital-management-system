@@ -34,14 +34,15 @@ public class DoctorService {
       */
      public ResponseEntity<List<Doctor>> fetchAllDoctorService(){
     	 List<Doctor> doct=doctorRepository.findAll();
-    	 if(!(doct.isEmpty())) {
-    		 
-    		 return ResponseEntity.ok(doct);
-    	 }
-    	 else {
-    		 return ResponseEntity.notFound().build();
-    				 
-    	 }
+    	 return ResponseEntity.ok(doct);
+//    	 if(!(doct.isEmpty())) {
+//    		 
+//    		 return ResponseEntity.ok(doct);
+//    	 }
+//    	 else {
+//    		 return ResponseEntity.notFound().build();
+//    				 
+//    	 }
      }
     
      /*

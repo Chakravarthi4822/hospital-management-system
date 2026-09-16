@@ -56,11 +56,12 @@ public class LabResultService {
 
 	public ResponseEntity<List<LabResult>> fetchAllLabResultsService() {
 		List<LabResult> results = labResultRepository.findAll();
-		if (!(results.isEmpty())) {
-			return ResponseEntity.ok(results);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+		return ResponseEntity.ok(results);
+//		if (!(results.isEmpty())) {
+//			return ResponseEntity.ok(results);
+//		} else {
+//			return ResponseEntity.notFound().build();
+//		}
 	}
 
 	/*

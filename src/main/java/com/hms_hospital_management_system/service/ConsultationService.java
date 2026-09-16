@@ -52,12 +52,13 @@ public class ConsultationService {
 	 */
 	public ResponseEntity<List<Consultation>> fetchAllConsultationService(){
 		List<Consultation> consultation=consultationRepository.findAll();
-		if(!(consultation.isEmpty())) {
-			return ResponseEntity.ok(consultation);
-		}
-		else {
-			return ResponseEntity.notFound().build();
-		}
+		return ResponseEntity.ok(consultation);
+//		if(!(consultation.isEmpty())) {
+//			return ResponseEntity.ok(consultation);
+//		}
+//		else {
+//			return ResponseEntity.notFound().build();
+//		}
 	}
 	
 	/*

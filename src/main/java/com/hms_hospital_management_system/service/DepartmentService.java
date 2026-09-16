@@ -37,12 +37,13 @@ public class DepartmentService {
 	
 	public ResponseEntity<List<Department>> fetchAllDepartmentService(){
 		List<Department> dept=departmentRepository.findAll();
-		if(!(dept.isEmpty())) {
-			return ResponseEntity.status(HttpStatus.OK).body(dept);
-		}
-		else {
-			return ResponseEntity.notFound().build();
-		}
+		return ResponseEntity.status(HttpStatus.OK).body(dept);
+//		if(!(dept.isEmpty())) {
+//			return ResponseEntity.status(HttpStatus.OK).body(dept);
+//		}
+//		else {
+//			return ResponseEntity.notFound().build();
+//		}
 	}
 	
 	/*

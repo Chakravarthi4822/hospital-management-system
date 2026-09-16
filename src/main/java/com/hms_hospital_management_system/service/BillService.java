@@ -61,12 +61,13 @@ public class BillService {
 	
 	public ResponseEntity<List<Bill>> fetchAllBillsService() {
 		List<Bill> bills = billRepository.findAll();
-		if(!(bills.isEmpty())) {
-			return ResponseEntity.ok(bills);
-		}
-		else {
-			return ResponseEntity.notFound().build();
-		}
+		return ResponseEntity.ok(bills);
+//		if(!(bills.isEmpty())) {
+//			return ResponseEntity.ok(bills);
+//		}
+//		else {
+//			return ResponseEntity.notFound().build();
+//		}
 	}
 
 

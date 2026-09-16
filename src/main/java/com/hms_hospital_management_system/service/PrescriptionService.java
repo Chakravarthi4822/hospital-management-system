@@ -50,11 +50,12 @@ public class PrescriptionService {
 	public ResponseEntity<List<Prescription>> fetchAllPrescriptionService() {
 
 		List<Prescription> prescriptions = prescriptionRepository.findAll();
-		if (!(prescriptions.isEmpty())) {
-			return ResponseEntity.ok(prescriptions);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+		return ResponseEntity.ok(prescriptions);
+//		if (!(prescriptions.isEmpty())) {
+//			return ResponseEntity.ok(prescriptions);
+//		} else {
+//			return ResponseEntity.notFound().build();
+//		}
 	}
 
 	/*

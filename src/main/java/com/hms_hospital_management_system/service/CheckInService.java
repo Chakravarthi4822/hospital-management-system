@@ -85,11 +85,12 @@ public class CheckInService {
 	 */
 	public ResponseEntity<List<CheckIn>> fetchAllCheckInService() {
 		List<CheckIn> ckk = checkInRepository.findAll();
-		if (!(ckk.isEmpty())) {
-			return ResponseEntity.status(HttpStatus.OK).body(ckk);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+		return ResponseEntity.status(HttpStatus.OK).body(ckk);
+//		if (!(ckk.isEmpty())) {
+//			return ResponseEntity.status(HttpStatus.OK).body(ckk);
+//		} else {
+//			return ResponseEntity.notFound().build();
+//		}
 
 	}
 

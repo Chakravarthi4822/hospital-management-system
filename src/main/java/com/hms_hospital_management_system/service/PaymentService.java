@@ -75,12 +75,13 @@ public class PaymentService {
 	
 	public ResponseEntity<List<Payment>> fetchAllPaymentsService() {
 		List<Payment> payments = paymentRepository.findAll();
-		if(!(payments.isEmpty())) {
-			return ResponseEntity.ok(payments);
-		}
-		else {
-			return ResponseEntity.notFound().build();
-		}
+		return ResponseEntity.ok(payments);
+//		if(!(payments.isEmpty())) {
+//			return ResponseEntity.ok(payments);
+//		}
+//		else {
+//			return ResponseEntity.notFound().build();
+//		}
 	}
 	
 	

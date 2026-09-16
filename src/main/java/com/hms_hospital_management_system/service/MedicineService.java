@@ -36,12 +36,13 @@ public class MedicineService {
     
     public ResponseEntity<List<Medicine>> fetchAllMedicinesService() {
         List<Medicine> medicines = medicineRepository.findAll();
-        if(!(medicines.isEmpty())) {
-        	return ResponseEntity.ok(medicines);
-        }
-        else {
-        	return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(medicines);
+//        if(!(medicines.isEmpty())) {
+//        	return ResponseEntity.ok(medicines);
+//        }
+//        else {
+//        	return ResponseEntity.notFound().build();
+//        }
         
     }
 

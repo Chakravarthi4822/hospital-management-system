@@ -46,13 +46,14 @@ public class PatientService {
 	 */
 	public ResponseEntity<List<Patient>> fetchAllPatientService(){
 		List<Patient> patient=patientRepository.findAll();
+		return ResponseEntity.status(HttpStatus.OK).body(patient);
 		
 		//it ccheck if null not found 
 		
-		if(!(patient.isEmpty())) {
-			return ResponseEntity.status(HttpStatus.OK).body(patient);
-		}
-		return ResponseEntity.notFound().build();
+//		if(!(patient.isEmpty())) {
+//			return ResponseEntity.status(HttpStatus.OK).body(patient);
+//		}
+//		return ResponseEntity.notFound().build();
 	}
 	
 	/*

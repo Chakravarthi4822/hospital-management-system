@@ -51,12 +51,13 @@ public class DiagnosisService {
 	 public ResponseEntity<List<Diagnosis>> fetchAllDiagnosisService() {
 
 		    List<Diagnosis> diagnoses = diagnosisRepository.findAll();
-		    	if(!(diagnoses.isEmpty())) {
-		    		return ResponseEntity.ok(diagnoses);
-		    	}
-		    	else {
-		    		return ResponseEntity.notFound().build();
-		    	}
+		    return ResponseEntity.ok(diagnoses);
+//		    	if(!(diagnoses.isEmpty())) {
+//		    		return ResponseEntity.ok(diagnoses);
+//		    	}
+//		    	else {
+//		    		return ResponseEntity.notFound().build();
+//		    	}
 		}
 	 
 	 /*
